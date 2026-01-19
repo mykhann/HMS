@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { backendApi } from "../../backendApi.js";
 
 export const useFetchHotelRooms = (hotelId) => {
     const [rooms, setRooms] = useState([]);
@@ -10,7 +11,7 @@ export const useFetchHotelRooms = (hotelId) => {
 
         const fetchRooms = async () => {
             try {
-                const response = await fetch(`https://hms-prod.onrender.com/api/v1/room/get/${hotelId}`);
+                const response = await fetch(`${backendApi}/room/get/${hotelId}`);
                 if (!response.ok) throw new Error("Failed to fetch");
                 const data = await response.json();
                 setRooms(data);

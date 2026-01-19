@@ -8,6 +8,7 @@ import { ClipLoader } from "react-spinners";
 import {  setBooking } from "../../reduxStore/HotelSlice";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import { backendApi } from "../../../backendApi.js";
 const FetchAllHotelBookings = () => {
   const { bookings, loading, error, cancelBooking } = UseHotelBookings();
 
@@ -96,7 +97,7 @@ const BookingCard = ({ booking, cancelBooking }) => {
   const handleStatusChange = async (status) => {
     try {
       const response = await axios.put(
-        `https://hms-prod.onrender.com/api/v1/booking/update-booking/${booking._id}`,
+        `${backendApi}}booking/update-booking/${booking._id}`,
         { status },
         { withCredentials: true }
       );

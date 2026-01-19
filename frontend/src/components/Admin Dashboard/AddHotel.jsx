@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setHotels } from "../../reduxStore/HotelSlice";
 import SideNavbarAdmin from "./SideNavbarAdmin";
+import { backendApi } from "../../../backendApi.js";
 
 const AddHotel = () => {
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ const AddHotel = () => {
 
     try {
       const res = await axios.post(
-        "https://hms-prod.onrender.com/api/v1/hotel/create",
+        `${backendApi}/hotel/create`,
         formData,
         {
           withCredentials: true,

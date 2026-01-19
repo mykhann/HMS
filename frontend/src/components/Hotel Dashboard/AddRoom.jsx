@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import SideNavbar from "./SideNavbar";
+import { backendApi } from "../../../backendApi.js";
 
 const AddRoom = () => {
   const [roomData, setRoomData] = useState({
@@ -79,7 +80,7 @@ const AddRoom = () => {
 
     try {
       const response = await axios.post(
-        "https://hms-prod.onrender.com/api/v1/room/add",
+        `${backendApi}/room/add`,
         formData,
         {
           withCredentials: true,

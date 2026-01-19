@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../../reduxStore/authSlice";
 import { toast } from "react-toastify";
 import Footer from "../layout/Footer";
+import { backendApi } from "../../../backendApi.js";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const Login = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://hms-prod.onrender.com/api/v1/user/login", input, { withCredentials: true });
+      const res = await axios.post(`${backendApi}/user/login`, input, { withCredentials: true });
   
       if (res.data.success) {
         toast.success(res.data.message);

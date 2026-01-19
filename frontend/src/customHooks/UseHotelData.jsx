@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { backendApi } from "../../backendApi.js";
 
 const useHotelData = () => {
   const [hotel, setHotel] = useState(null);
@@ -11,7 +12,7 @@ const useHotelData = () => {
   useEffect(() => {
     const fetchHotelInfo = async () => {
       try {
-        const { data } = await axios.get("https://hms-prod.onrender.com/api/v1/hotel/my-hotel", {
+        const { data } = await axios.get(`${backendApi}/hotel/my-hotel`, {
           withCredentials: true,
         });
         setHotel(data.hotel);

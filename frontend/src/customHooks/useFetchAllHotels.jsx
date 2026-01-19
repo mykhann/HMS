@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { setHotels } from '../reduxStore/HotelSlice';  
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { backendApi } from '../../backendApi.js';
 
 const useFetchAllHotels = () => {
   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ const useFetchAllHotels = () => {
   useEffect(() => {
     const fetchHotels = async () => {   
       try {
-        const res = await axios.get('https://hms-prod.onrender.com/api/v1/hotel/get/hotels');
+        const res = await axios.get(`${backendApi}/hotel/get/hotels`);
         if (res.data.success) {
           dispatch(setHotels(res.data.hotels));  
         }

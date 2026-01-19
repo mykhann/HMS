@@ -5,6 +5,7 @@ import { MapPinIcon } from "@heroicons/react/24/solid";
 import Navbar from "../shared/Navbar";
 import Footer from "../layout/Footer";
 import SideNavbarAdmin from "./SideNavbarAdmin";
+import { backendApi } from "../../../backendApi.js";
 
 const FetchAllAdminBookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -14,7 +15,7 @@ const FetchAllAdminBookings = () => {
   useEffect(() => {
     const fetchBookingHistory = async () => {
       try {
-        const { data } = await axios.get("https://hms-prod.onrender.com/api/v1/admin/bookings", {
+        const { data } = await axios.get(`${backendApi}/admin/bookings`, {
           withCredentials: true,
         });
         setBookings(data.bookings);
@@ -31,7 +32,7 @@ const FetchAllAdminBookings = () => {
   const cancelBooking = async (bookingId) => {
     try {
       const response = await axios.delete(
-        `https://hms-prod.onrender.com/api/v1/booking/cancel-booking/${bookingId}`,
+        `${backendApi}/booking/cancel-booking/${bookingId}`,
         { withCredentials: true }
       );
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment";
+import { backendApi } from "../../../backendApi.js";
 
 const LatestHotels = () => {
   const [hotels, setHotels] = useState([]);
@@ -10,7 +11,7 @@ const LatestHotels = () => {
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        const response = await axios.get("https://hms-prod.onrender.com/api/v1/hotel/get/hotels");
+        const response = await axios.get(`${backendApi}/hotel/get/hotels`);
         setHotels(response.data.hotels);
       } catch (err) {
         setError("Failed to load hotels");

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { backendApi } from "../../backendApi.js";
 
 const UseHotelBookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -10,7 +11,7 @@ const UseHotelBookings = () => {
     const fetchBookingHistory = async () => {
       try {
         const { data } = await axios.get(
-          "https://hms-prod.onrender.com/api/v1/booking/hotel/bookings",
+          `${backendApi}/booking/hotel/bookings`,
           { withCredentials: true }
         );
         setBookings(data.bookings);
@@ -27,7 +28,7 @@ const UseHotelBookings = () => {
   const cancelBooking = async (bookingId) => {
     try {
       const response = await axios.delete(
-        `https://hms-prod.onrender.com/api/v1/booking/cancel-booking/${bookingId}`,
+        `${backendApi}/booking/cancel-booking/${bookingId}`,
         { withCredentials: true }
       );
 

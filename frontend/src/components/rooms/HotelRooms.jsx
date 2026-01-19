@@ -11,6 +11,7 @@ import {
   FaUtensils,
   FaParking,
 } from "react-icons/fa";
+import { backendApi } from "../../../backendApi.js";
 
 const HotelRooms = () => {
   const { hotelId } = useParams();
@@ -25,7 +26,7 @@ const HotelRooms = () => {
     const fetchRooms = async () => {
       try {
         const response = await fetch(
-          `https://hms-prod.onrender.com/api/v1/room/get/${hotelId}`
+          `${backendApi}/room/get/${hotelId}`
         );
         const data = await response.json();
         dispatch(setSingleHotelRoom(data.rooms));

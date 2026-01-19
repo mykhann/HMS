@@ -6,6 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { setUser } from "../../reduxStore/authSlice";
 import { FaPhotoFilm } from "react-icons/fa6";
+import { backendApi } from "../../../backendApi.js";
 
 const EditProfile = () => {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ const EditProfile = () => {
     }
     try {
       const res = await axios.put(
-        "https://hms-prod.onrender.com/api/v1/user/Update-Profile",
+        `${backendApi}/user/Update-Profile`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

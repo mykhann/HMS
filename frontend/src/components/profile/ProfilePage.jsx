@@ -7,6 +7,7 @@ import { PencilIcon } from "@heroicons/react/24/solid";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../layout/Footer";
 import axios from "axios"; 
+import { backendApi } from "../../../backendApi.js";
 
 const ProfilePage = () => {
   const { user } = useSelector((store) => store.auth);
@@ -36,7 +37,7 @@ const ProfilePage = () => {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        "https://hms-prod.onrender.com/api/v1/user/Update-Profile",
+        `${backendApi}/user/Update-Profile`,
         formData,
         {
           headers: {

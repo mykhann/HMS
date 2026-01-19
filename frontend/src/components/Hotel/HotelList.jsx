@@ -9,6 +9,7 @@ import axios from "axios";
 import { FaPhone } from "react-icons/fa";
 import { setHotels } from "../../reduxStore/HotelSlice";
 import SideNavbarAdmin from "../Admin Dashboard/SideNavbarAdmin";
+import { backendApi } from "../../../backendApi.js";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -31,7 +32,7 @@ const HotelList = () => {
       try {
        
         const response = await axios.get(
-          "https://hms-prod.onrender.com/api/v1/booking/get",
+          `${backendApi}/booking/get`,
           { withCredentials: true }
         );
         setBookings(response.data.bookings);
@@ -49,7 +50,7 @@ const HotelList = () => {
   const handleRating = async (hotelId, rating) => {
     try {
       const response = await axios.post(
-        `https://hms-prod.onrender.com/api/v1/rating/${hotelId}/rate`,
+        `${backendApi}/rating/${hotelId}/rate`,
         { rating },
         { withCredentials: true }
       );
@@ -96,7 +97,7 @@ const HotelList = () => {
   const handleDelete = async (hotelId) => {
     try {
       const response = await axios.delete(
-        `https://hms-prod.onrender.com/api/v1/hotel/delete/${hotelId}`,
+        `${backendApi}/hotel/delete/${hotelId}`,
         { withCredentials: true }
       );
 

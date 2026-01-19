@@ -4,6 +4,7 @@ import Navbar from "../shared/Navbar";
 import Footer from "../layout/Footer";
 import axios from "axios";
 import SideNavbarAdmin from "./SideNavbarAdmin";
+import { backendApi } from "../../../backendApi.js";
 
 const FetchAllUsers = () => {
   const [users, setUsers] = useState([]);
@@ -18,7 +19,7 @@ const FetchAllUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("https://hms-prod.onrender.com/api/v1/admin/users", {
+        const response = await axios.get(`${backendApi}/admin/users`, {
           withCredentials: true,
         });
         console.log("API Response:", response.data);

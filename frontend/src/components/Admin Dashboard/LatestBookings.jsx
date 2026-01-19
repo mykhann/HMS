@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment";
+import { backendApi } from "../../../backendApi.js";
 
 const LatestBookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -10,7 +11,7 @@ const LatestBookings = () => {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const response = await axios.get("https://hms-prod.onrender.com/api/v1/admin/bookings", {
+        const response = await axios.get(`${backendApi}/admin/bookings`, {
           withCredentials: true, 
         });
 

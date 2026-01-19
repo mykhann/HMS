@@ -7,6 +7,7 @@ import Footer from "../layout/Footer";
 import { FaWifi, FaTv, FaSnowflake, FaUtensils, FaParking, FaEdit, FaTrash } from "react-icons/fa";
 import SideNavbar from "./SideNavbar";
 import { ClipLoader } from "react-spinners";
+import { backendApi } from "../../../backendApi.js";
 
 const FetchAllHotelStaffRooms = () => {
   const { hotelId } = useParams();
@@ -29,7 +30,7 @@ const FetchAllHotelStaffRooms = () => {
   useEffect(() => {
     const fetchRooms = async () => {
       try {
-        const response = await axios.get("https://hms-prod.onrender.com/api/v1/hotel/my-rooms", {
+        const response = await axios.get(`${backendApi}/hotel/my-rooms`, {
           withCredentials: true,
         });
 
@@ -89,7 +90,7 @@ const FetchAllHotelStaffRooms = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `https://hms-prod.onrender.com/api/v1/room/update/${roomId}`,
+        `${backendApi}/room/update/${roomId}`,
         editFormData,
         { withCredentials: true }
       );
@@ -112,7 +113,7 @@ const FetchAllHotelStaffRooms = () => {
   const handleDeleteRoom = async (roomId) => {
     try {
       const response = await axios.delete(
-        `https://hms-prod.onrender.com/api/v1/room/delete/${roomId}`,
+        `${backendApi}/room/delete/${roomId}`,
         { withCredentials: true }
       );
       if (response.data.success) {

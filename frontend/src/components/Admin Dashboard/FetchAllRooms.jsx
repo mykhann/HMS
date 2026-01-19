@@ -4,12 +4,13 @@ import { toast } from "react-toastify";
 import { UserIcon, CurrencyDollarIcon, TrashIcon } from "@heroicons/react/24/solid";
 import Footer from "../layout/Footer";
 import SideNavbarAdmin from "./SideNavbarAdmin";
+import { backendApi } from "../../../backendApi.js";
 
 const AllRooms = () => {
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [sidebarOpen, setSidebarOpen] = useState(true); // Track sidebar state
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   useEffect(() => {
     fetchAllRooms();
@@ -17,7 +18,7 @@ const AllRooms = () => {
 
   const fetchAllRooms = async () => {
     try {
-      const { data } = await axios.get("https://hms-prod.onrender.com/api/v1/admin/rooms", {
+      const { data } = await axios.get(`${backendApi}/admin/rooms`, {
         withCredentials: true,
       });
       setRooms(data.rooms);
@@ -32,7 +33,7 @@ const AllRooms = () => {
     if (!window.confirm("Are you sure you want to delete this room?")) return;
 
     try {
-      await axios.delete(`https://hms-prod.onrender.com/api/v1/room/delete/${roomId}`, {
+      await axios.delete(`${backendApi}/room/delete/${roomId}`, {
         withCredentials: true,
       });
       toast.success("Room deleted successfully");

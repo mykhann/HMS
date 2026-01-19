@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Footer from "../layout/Footer";
+import { backendApi } from "../../../backendApi.js";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ const Signup = () => {
     }
 
     try {
-      const res = await axios.post("https://hms-prod.onrender.com/api/v1/user/register", input, {
+      const res = await axios.post(`${backendApi}/user/register`, input, {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });

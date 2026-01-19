@@ -6,6 +6,7 @@ import Navbar from "../shared/Navbar";
 import Footer from "../layout/Footer";
 import { useSelector } from "react-redux";
 import SideNavbarAdmin from "../Admin Dashboard/SideNavbarAdmin";
+import { backendApi } from "../../../backendApi.js";
 
 const BookingHistory = () => {
   const [bookings, setBookings] = useState([]);
@@ -17,7 +18,7 @@ const BookingHistory = () => {
     const fetchBookingHistory = async () => {
       try {
         const { data } = await axios.get(
-          "https://hms-prod.onrender.com/api/v1/booking/get",
+          `${backendApi}/booking/get`,
           {
             withCredentials: true,
           }
@@ -36,7 +37,7 @@ const BookingHistory = () => {
   const cancelBooking = async (bookingId) => {
     try {
       const response = await axios.delete(
-        `https://hms-prod.onrender.com/api/v1/booking/cancel-booking/${bookingId}`,
+        `${backendApi}/booking/cancel-booking/${bookingId}`,
         { withCredentials: true }
       );
 

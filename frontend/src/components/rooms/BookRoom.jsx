@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { setBooking } from '../../reduxStore/HotelSlice';
 import Navbar from '../shared/Navbar';
 import Footer from '../layout/Footer';
+import { backendApi } from '../../../backendApi.js';
 
 const BookRoom = () => {
   const [checkInDate, setCheckInDate] = useState('');
@@ -24,7 +25,7 @@ const BookRoom = () => {
 
     try {
       const response = await axios.post(
-        `https://hms-prod.onrender.com/api/v1/booking/${roomId}`,
+        `${backendApi}/booking/${roomId}`,
         bookingData,
         {
           withCredentials: true,

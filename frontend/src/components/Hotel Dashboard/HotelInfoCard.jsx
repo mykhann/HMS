@@ -3,6 +3,7 @@ import axios from "axios";
 import { FaMapMarkerAlt, FaStar, FaEnvelope, FaPhone, FaEdit, FaSave } from "react-icons/fa";
 import SideNavbar from "./SideNavbar";
 import { ClipLoader } from "react-spinners";
+import { backendApi } from "../../../backendApi.js";
 
 const HotelInfoCard = () => {
   const [hotel, setHotel] = useState(null);
@@ -14,7 +15,7 @@ const HotelInfoCard = () => {
   useEffect(() => {
     const fetchHotelInfo = async () => {
       try {
-        const { data } = await axios.get("https://hms-prod.onrender.com/api/v1/hotel/my-hotel", { withCredentials: true });
+        const { data } = await axios.get(`${backendApi}/hotel/my-hotel`, { withCredentials: true });
         setHotel(data.hotel);
         setFormData({
           name: data.hotel.name || "",
@@ -51,7 +52,7 @@ const HotelInfoCard = () => {
     });
 
     try {
-      const { data } = await axios.put("https://hms-prod.onrender.com/api/v1/hotel/update", formDataToSend, {
+      const { data } = await axios.put(`${backendApi}/hotel/update`, formDataToSend, {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       });
