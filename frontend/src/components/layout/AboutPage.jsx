@@ -13,7 +13,7 @@ const AboutPage = () => {
             About Us
           </h2>
           <p className="text-lg text-gray-300 leading-relaxed">
-            At <span className="font-semibold text-yellow-400">Grand Horizon</span>, we are passionate about creating unforgettable experiences for our guests. Our platform is designed to make hotel booking seamless, offering a wide range of luxurious accommodations, personalized services, and exclusive deals. Whether you're planning a relaxing getaway, a business trip, or a family vacation, we are here to ensure your stay is nothing short of extraordinary.
+            At <span className="font-semibold text-yellow-400">Roomify</span>, we are passionate about creating unforgettable experiences for our guests. Our platform is designed to make hotel booking seamless, offering a wide range of luxurious accommodations, personalized services, and exclusive deals. Whether you're planning a relaxing getaway, a business trip, or a family vacation, we are here to ensure your stay is nothing short of extraordinary.
           </p>
         </section>
 
@@ -69,7 +69,7 @@ const AboutPage = () => {
             Our Story
           </h2>
           <p className="text-lg text-gray-300 leading-relaxed">
-            Founded in 2024, <span className="font-semibold text-yellow-400">Grand Horizon</span> was born out of a passion for travel and hospitality. Our founders, seasoned travelers themselves, recognized the need for a platform that combines luxury, convenience, and personalized service. Today, we are proud to be a trusted name in the hospitality industry, helping thousands of guests create unforgettable memories around the world.
+            Founded in 2024, <span className="font-semibold text-yellow-400">Roomify</span> was born out of a passion for travel and hospitality. Our founders, seasoned travelers themselves, recognized the need for a platform that combines luxury, convenience, and personalized service. Today, we are proud to be a trusted name in the hospitality industry, helping thousands of guests create unforgettable memories around the world.
           </p>
         </section>
       </div>
