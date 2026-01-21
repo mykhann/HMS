@@ -120,8 +120,7 @@ const HotelList = () => {
 
   return (
     <>
-      {user?.role !== "admin" && <Navbar />}
-      {user?.role === "admin" && <SideNavbarAdmin />}
+     
 
       <div className="flex flex-col items-center gap-4 p-4 bg-[#0b1633] min-h-screen">
         <input
@@ -227,7 +226,7 @@ const HotelList = () => {
         </div>
         
       )}
-      {user?.role !== "admin" && <Footer />}
+    
 
     </>
   );

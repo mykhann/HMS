@@ -30,6 +30,7 @@ import HotelInfoCard from "./components/Hotel Dashboard/HotelInfoCard";
 import AddRoom from "./components/Hotel Dashboard/AddRoom.jsx";
 import AdminLayout from "./components/Admin Dashboard/AdminLayout.jsx";
 import ProtectedRoute from "./components/Admin Dashboard/ProtectedRoute.jsx";
+import HotelsPage from "./components/Hotel/HotelsPage.jsx";
 
 // Error Boundary Component
 const ErrorPage = () => {
@@ -63,7 +64,7 @@ const router = createBrowserRouter([
   // Hotel & rooms component 
 
   { path: "/about", element: <AboutPage />, errorElement: <ErrorPage /> },
-  { path: "/hotels", element: <HotelList />, errorElement: <ErrorPage /> },
+  { path: "/hotels", element: <HotelsPage />, errorElement: <ErrorPage /> },
   {
     path: `/rooms/:hotelId`,
     element: <HotelRooms />,
