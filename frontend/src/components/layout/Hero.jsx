@@ -13,7 +13,7 @@ const Hero = () => {
         {/* Content Overlay */}
         <div className="relative z-10 text-center max-w-4xl px-4">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in-up">
-            Welcome to <span className="text-yellow-400">Hotel Name</span>
+            Welcome to <span className="text-yellow-400">Roomify</span>
           </h1>
           <p className="text-lg md:text-xl lg:text-2xl mb-8 text-gray-300 animate-fade-in-up delay-100">
             Experience unparalleled luxury and comfort at our world-class hotel. Your perfect getaway starts here.

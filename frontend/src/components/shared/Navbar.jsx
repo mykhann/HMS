@@ -27,7 +27,7 @@ const Navbar = () => {
     <nav className="relative bg-[#0e1c41] text-white shadow-lg py-6">
       <div className="container mx-auto flex items-center justify-between px-6">
         <Link to="/" className="text-3xl font-extrabold tracking-wide text-gray-100">
-          LOGO HERE
+          Roomify
         </Link>
 
         <div className="hidden md:flex space-x-8 text-lg font-medium">
