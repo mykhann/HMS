@@ -11,6 +11,7 @@ const HotelsPage = () => {
     <>
       {user?.role === "admin" ? <SideNavbarAdmin /> : <Navbar />}
       <HotelList />
+      <Navbar/>
     </>
   );
 };
