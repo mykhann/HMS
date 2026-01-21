@@ -10,6 +10,8 @@ import { FaPhone } from "react-icons/fa";
 import { setHotels } from "../../reduxStore/HotelSlice";
 import SideNavbarAdmin from "../Admin Dashboard/SideNavbarAdmin";
 import { backendApi } from "../../../backendApi.js";
+import Navbar from "../shared/Navbar.jsx";
+import Footer from "../layout/Footer.jsx"
 
 const ITEMS_PER_PAGE = 10;
 
@@ -30,15 +32,12 @@ const HotelList = () => {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-       
-        const response = await axios.get(
-          `${backendApi}/booking/get`,
-          { withCredentials: true }
-        );
+        const response = await axios.get(`${backendApi}/booking/get`, {
+          withCredentials: true,
+        });
         setBookings(response.data.bookings);
       } catch (error) {
         console.error("[ERROR] Fetching bookings:", error);
-        
       } finally {
         setIsLoadingBookings(false);
       }
@@ -52,7 +51,7 @@ const HotelList = () => {
       const response = await axios.post(
         `${backendApi}/rating/${hotelId}/rate`,
         { rating },
-        { withCredentials: true }
+        { withCredentials: true },
       );
 
       if (response.data.success) {
@@ -70,8 +69,10 @@ const HotelList = () => {
   // Check if the user has a completed booking for a specific hotel
   const hasCompletedBooking = (hotelId) => {
     const result = bookings.some((booking) => {
-      const userIdMatch = booking.user?._id?.toString() === user?._id?.toString();
-      const hotelIdMatch = booking.hotel?._id?.toString() === hotelId?.toString();
+      const userIdMatch =
+        booking.user?._id?.toString() === user?._id?.toString();
+      const hotelIdMatch =
+        booking.hotel?._id?.toString() === hotelId?.toString();
       const statusMatch = booking.status?.trim().toLowerCase() === "completed";
 
       console.log("[DEBUG] hasCompletedBooking Check:", {
@@ -91,14 +92,14 @@ const HotelList = () => {
   const filteredHotels = hotels.filter(
     (hotel) =>
       hotel.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      hotel.location.toLowerCase().includes(searchQuery.toLowerCase())
+      hotel.location.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   const handleDelete = async (hotelId) => {
     try {
       const response = await axios.delete(
         `${backendApi}/hotel/delete/${hotelId}`,
-        { withCredentials: true }
+        { withCredentials: true },
       );
 
       if (response.data.success) {
@@ -119,9 +120,9 @@ const HotelList = () => {
 
   return (
     <>
-     
-
+      {user?.role !== "admin" && <Navbar />}
       {user?.role === "admin" && <SideNavbarAdmin />}
+
       <div className="flex flex-col items-center gap-4 p-4 bg-[#0b1633] min-h-screen">
         <input
           type="text"
@@ -146,7 +147,9 @@ const HotelList = () => {
                 </button>
               )}
               <img
-                src={hotel.images || "https://source.unsplash.com/450x300/?hotel"}
+                src={
+                  hotel.images || "https://source.unsplash.com/450x300/?hotel"
+                }
                 alt={hotel.name}
                 className="w-1/3 object-cover"
               />
@@ -222,7 +225,10 @@ const HotelList = () => {
             </button>
           )}
         </div>
+        
       )}
+      {user?.role !== "admin" && <Footer />}
+
     </>
   );
 };
